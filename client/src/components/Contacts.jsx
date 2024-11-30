@@ -23,7 +23,7 @@ export const Contacts = () => {
 
     try {
       // Using Axios to post form data to the server
-      const response = await axios.post('https://deploy-server-jbgu.onrender.com', formData);
+      const response = await axios.post('https://deploy-server-jbgu.onrender.com/api/sendEmail', formData);
 
       if (response.status === 200) {
         setStatusMessage('Message sent successfully!');
