@@ -1,5 +1,5 @@
 import React from 'react'
-import crudapp from "../assets/crud.png";
+import chatty from "../assets/chatty.jpg";
 import foodcart from "../assets/food-cart.png";
 import moviefinder from "../assets/movie-finder.png";
 import weather from "../assets/weather-finder.png";
@@ -9,6 +9,14 @@ import pics from "../assets/img.jpg";
 const projects = [
   {
     id: 1,
+    name: "Real Time Chat-App",
+    technologies: "MONGO-DB,EXPRESS-JS,REACT-JS,NODEJ-S,DAISY-UI,CLOUDINARY,SOCKET-IO",
+    image: chatty,
+    github: "https://github.com/SSHariharan24/RealTime-Chat-App.git",
+  },
+
+  {
+    id: 2,
     name: "Signup and Signin Using CRUD",
     technologies: "MERN USING JWT AUTH AND SIGNIN,SIGNUP,FORGET AND RESETPASSWORD",
     image: pics,
@@ -16,47 +24,41 @@ const projects = [
   },
     
     {
-      id: 2,
+      id: 3,
       name: "Food-Cart",
       technologies: "REACT JS",
       image: foodcart,
       github: "https://github.com/SSHariharan24/Food-Cart.git",
     },
     {
-      id: 3,
+      id: 4,
       name: "Movie-Finder",
       technologies: "REACT JS",
       image: moviefinder,
       github: "https://github.com/SSHariharan24/movie-finder.git",
     },
     {
-      id: 4,
+      id: 5,
       name: "Weather-Finder",
       technologies: "REACT JS",
       image: weather,
       github: "https://github.com/SSHariharan24/weather-finder.git",
     },
     {
-      id: 5,
+      id: 6,
       name: "QR-Code Generator",
       technologies: "REACT JS",
       image: qrcode,
       github: "https://github.com/SSHariharan24/QR-Code.git",
     },
     {
-      id: 6,
+      id: 7,
       name: "Currency-Convetor",
       technologies: "REACT JS",
       image: currency,
       github: "https://github.com/SSHariharan24/currency-convertor.git",
     },
-    {
-      id: 7,
-      name: "Crud-App",
-      technologies: "REACT AND NODE JS USING CRUD APP",
-      image: crudapp,
-      github: "https://github.com/SSHariharan24/Crud-app.git",
-    },
+
   ];
 
 export const Projects = () => {
