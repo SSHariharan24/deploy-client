@@ -12,7 +12,7 @@ export const Navbar = () => {
             <a href='#Projects' className='hover:text-gray-400'>Projects</a>
             <a href='#Contacts' className='hover:text-gray-400'>Contacts</a>
         </div>
-        <a href="https://github.com/SSHariharan24" className='bg-gradient-to-r from-green-400 to-blue-500 text-white hidden md:inline
+        <a href="https://www.linkedin.com/in/hariharan-ss-525aa7329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className='bg-gradient-to-r from-green-400 to-blue-500 text-white hidden md:inline
         transform transition-transform duration-300 hover:scale-105 px-4 py-2 rounded-full '>Connect Me</a>
     </div>
     </nav> 
