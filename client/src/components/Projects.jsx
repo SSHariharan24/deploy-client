@@ -6,6 +6,9 @@ import weather from "../assets/weather-finder.png";
 import qrcode from "../assets/qr-code.png";
 import currency from "../assets/currency-convetor.png";
 import pics from "../assets/img.jpg";
+import { motion } from "framer-motion";
+
+import {fadeIn} from './variants.js'
 const projects = [
   {
     id: 1,
@@ -63,13 +66,30 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <div className='bg-black text-white py-20' id="Projects">
+    <div className='home_data bg-black text-white py-20' id="Projects">
     <div className='container mx-auto px-8 md:px-16 lg:px-24'>
-        <h2 className='text-4xl font-bold text-center mb-12'> My Projects</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <motion.h2 
+        variants={fadeIn("right",0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{once:false,amount:0.7}}
+        className='text-4xl font-bold text-center mb-12'> My Projects</motion.h2>
+        <motion.div 
+        variants={fadeIn("right",0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        // whileHover="newhover"
+        viewport={{once:false,amount:0.7}}
+        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {projects.map((project) => (
-            <div key={project.id} className="bg-gray-800 p-6 rounded-lg hover:shadow-lg 
-            transform transition-transform duration-300 hover:scale-105">
+            <motion.div
+            variants={fadeIn("right",0.2)}
+    initial="hidden"
+    whileInView={"show"}
+    whileHover="newhover1"
+    viewport={{once:false,amount:0.7}}
+            key={project.id} className="bg-gray-800 p-6 rounded-lg hover:shadow-lg 
+            transform transition-transform duration-0 hover:scale-105">
               <img src={project.image} alt={project.name} className="rounded-lg mb-4 
               w-full h-48 object-cover" />
               <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
@@ -77,9 +97,9 @@ export const Projects = () => {
               <a href={project.github} className="inline-block bg-gradient-to-r 
               from-green-400 to-blue-500 text-white px-4 py-2 rounded-full" target="_blank" 
               rel="noopener noreferrer">GitHub</a>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         </div>
         </div>
   )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import {fadeIn} from './variants.js'
 // const backend = process.env.REACT_APP_BACKEND_URL
 export const Contacts = () => {
   // State to manage form data
@@ -46,10 +48,25 @@ export const Contacts = () => {
 
   return (
     <div className="bg-black text-white py-20" id="Contacts">
-      <div className="container mx-auto px-8 md:px-16 lg:px-24">
-        <h2 className="text-4xl font-bold text-center mb-12">Contact Me</h2>
+      <motion.div
+      variants={fadeIn("right",0.2)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{once:false,amount:0.7}}
+      className="container mx-auto px-8 md:px-16 lg:px-24">
+        <motion.h2
+        variants={fadeIn("right",0.2)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{once:false,amount:0.7}}
+        className="text-4xl font-bold text-center mb-12">Contact Me</motion.h2>
         <div className="flex flex-col md:flex-row items-center md:space-x-12">
-          <div className="flex-1">
+          <motion.div
+          variants={fadeIn("right",0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{once:false,amount:0.7}}
+          className="flex-1">
             <h3 className='text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
             from-green-400 to-blue-500 mb-4'>Let's Talk</h3>
             <p>I'm open to discussing web development projects or partnership opportunities.</p>
@@ -67,7 +84,7 @@ export const Contacts = () => {
                 <FaMapMarkedAlt className='inline-block text-green-400 mr-2'></FaMapMarkedAlt>
                 <span>Temcy colony 1st cross street vilangudi, Madurai, India</span>
             </div>
-          </div>
+          </motion.div>
           <div className='flex-1 w-full'>
             <form className='space-y-4' onSubmit={handleSubmit}>
                 {statusMessage && <p>{statusMessage}</p>}
@@ -120,7 +137,7 @@ export const Contacts = () => {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
