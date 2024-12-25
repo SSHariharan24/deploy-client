@@ -74,12 +74,7 @@ export const Projects = () => {
         whileInView={"show"}
         viewport={{once:false,amount:0.7}}
         className='text-4xl font-bold text-center mb-12'> My Projects</motion.h2>
-        <motion.div 
-        variants={fadeIn("right",0.2)}
-        initial="hidden"
-        whileInView={"show"}
-        // whileHover="newhover"
-        viewport={{once:false,amount:0.7}}
+        <div 
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
         {projects.map((project) => (
             <motion.div
@@ -99,7 +94,7 @@ export const Projects = () => {
               rel="noopener noreferrer">GitHub</a>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
         </div>
         </div>
   )

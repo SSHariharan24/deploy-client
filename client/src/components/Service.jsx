@@ -25,12 +25,7 @@ const services = [
 export const Service = () => {
   return (
     <div className='bg-black text-white py-20' id="Service">
-    <motion.div
-    variants={fadeIn("right",0.2)}
-    initial="hidden"
-    whileInView={"show"}
-    viewport={{once:false,amount:0.7}}
-    className='container mx-auto px-8 md:px-16 lg:px-24'>
+    <div  className='container mx-auto px-8 md:px-16 lg:px-24'>
         <motion.h2
         variants={fadeIn("right",0.2)}
         initial="hidden"
@@ -62,7 +57,7 @@ export const Service = () => {
               </motion.div>  
             ))}
         </div>
-        </motion.div>
+        </div>
         </div>
   )
 }

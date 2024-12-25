@@ -6,14 +6,19 @@ import {fadeIn} from './variants.js'
 export const About = () => {
   return (
     <div className='bg-black text-white py-20' id="About">
-        <motion.div 
-        variants={fadeIn("left",0.2)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{once:false,amount:0.7}}
-        className='container mx-auto px-8 md:px-16 lg:px-24'>
-            <h2 className='text-4xl font-bold text-center mb-12'>About Me</h2>
-            <div className='flex flex-col md:flex-row items-center md:space-x-12'>
+        <div className='container mx-auto px-8 md:px-16 lg:px-24'>
+            <motion.h2  variants={fadeIn("left",0.5)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{once:false,amount:0.7}}
+                 className='text-4xl font-bold text-center mb-12'>About Me</motion.h2>
+            <motion.div 
+             variants={fadeIn("up",0.5)}
+             initial="hidden"
+             whileInView={"show"}
+            //  whileHover="hover"
+             viewport={{once:false,amount:0.7}}
+            className='flex flex-col md:flex-row items-center md:space-x-12'>
                 <motion.img
                 variants={fadeIn("up",0.5)}
                 initial="hidden"
@@ -72,7 +77,13 @@ export const About = () => {
 
                 </div>
 
-            <div className='mt-12 flex justify-around text-center'>
+            <motion.div 
+             variants={fadeIn("left",0.5)}
+             initial="hidden"
+             whileInView={"show"}
+            //  whileHover="hover"
+             viewport={{once:false,amount:0.7}}
+            className='mt-12 flex justify-around text-center'>
                 <div>
                     <h3 className='text-2xl font-bold text-transparent bg-clip-text
                     bg-gradient-to-r from-green-400 to-blue-500'>
@@ -98,11 +109,11 @@ export const About = () => {
                     <p>Happy clients</p>
                 </div> */}
                 
-            </div>
+            </motion.div>
 
 </div>
-    </div>
-        </motion.div>
+    </motion.div>
+        </div>
             </div>
   )
 }
