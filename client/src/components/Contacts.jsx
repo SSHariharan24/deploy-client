@@ -50,7 +50,7 @@ export const Contacts = () => {
     <div className="bg-black text-white py-20" id="Contacts">
       <motion.div
       variants={fadeIn("right",0.2)}
-      initial="hidden"
+      initial={{opacity:0.5}}
       whileInView={"show"}
       viewport={{once:false,amount:0.7}}
       className="container mx-auto px-8 md:px-16 lg:px-24">
@@ -68,10 +68,10 @@ export const Contacts = () => {
                         viewport={{once:false,amount:0.7}}
         className="flex flex-col md:flex-row items-center md:space-x-12">
           <motion.div
-          // variants={fadeIn("right",0.2)}
-          // initial="hidden"
-          // whileInView={"show"}
-          // viewport={{once:false,amount:0.7}}
+          variants={fadeIn("right",0.2)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{once:false,amount:0.7}}
           className="flex-1">
             <h3 className='text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
             from-green-400 to-blue-500 mb-4'>Let's Talk</h3>
@@ -92,7 +92,15 @@ export const Contacts = () => {
             </div>
           </motion.div>
           <div className='flex-1 w-full'>
-            <form className='space-y-4' onSubmit={handleSubmit}>
+            <motion.form
+            variants={fadeIn("right",0.2)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    // whileHover="newhover1"
+                    whileTap="tap"
+                  exit="exit"
+                    viewport={{once:false,amount:0.7}}
+            className='space-y-4' onSubmit={handleSubmit}>
                 {statusMessage && <p>{statusMessage}</p>}
                 <div>
                     <label htmlFor="name" className='block mb-2'>Your Name</label>
@@ -140,7 +148,7 @@ export const Contacts = () => {
                 >
                   Send
                 </button>
-            </form>
+            </motion.form>
           </div>
         </motion.div>
       </motion.div>

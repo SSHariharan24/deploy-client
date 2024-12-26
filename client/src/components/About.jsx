@@ -8,20 +8,20 @@ export const About = () => {
     <div className='bg-black text-white py-20' id="About">
         <div className='container mx-auto px-8 md:px-16 lg:px-24'>
             <motion.h2  variants={fadeIn("left",0.5)}
-                initial="hidden"
+                initial={{opacity:0}}
                 whileInView={"show"}
                 viewport={{once:false,amount:0.7}}
                  className='text-4xl font-bold text-center mb-12'>About Me</motion.h2>
             <motion.div 
              variants={fadeIn("up",0.5)}
-             initial="hidden"
+             initial={{opacity:1}}
              whileInView={"show"}
             //  whileHover="hover"
              viewport={{once:false,amount:0.7}}
             className='flex flex-col md:flex-row items-center md:space-x-12'>
                 <motion.img
                 variants={fadeIn("up",0.5)}
-                initial="hidden"
+                initial={{opacity:0}}
                 whileInView={"show"}
                 whileHover="hover"
                 viewport={{once:false,amount:0.7}}

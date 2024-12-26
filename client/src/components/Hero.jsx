@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import {fadeIn} from './variants.js'
 export const Hero = () => {
   return (
-    <div
-    className='bg-black text-white text-center py-16' id="Hero">
+    <div className='bg-black text-white text-center py-16' id="Hero">
         <motion.img
         variants={fadeIn("right",0.2)}
-        initial="hidden"
+        initial={{opacity:0}}
         whileInView={"show"}
         whileHover="newhover"
+        whileTap="tap"
+        exit="exit"
         viewport={{once:false,amount:0.7}}
         src={HeroImage} alt="" className='mx-auto mb-8 w-48 h-48 rounded-full object-cover 
         transition-transform duration-0 hover:scale-105' />
@@ -19,6 +20,8 @@ export const Hero = () => {
         variants={fadeIn("left",0.2)}
         initial="hidden"
         whileInView={"show"}
+        whileTap="tap"
+      exit="exit"
         viewport={{once:false,amount:0.7}}
         className='text-4xl font-bold'>
           I'm {""}
@@ -29,12 +32,16 @@ export const Hero = () => {
         variants={fadeIn("right",0.2)}
         initial="hidden"
         whileInView={"show"}
+        whileTap="tap"
+      exit="exit"
         viewport={{once:false,amount:0.7}}
         className='mt-4 text-lg,text-gray-300 '>I specialize in building modern and responsive web application</motion.p>
         <motion.div
         variants={fadeIn("right",0.2)}
         initial="hidden"
         whileInView={"show"}
+        whileTap="tap"
+      exit="exit"
         viewport={{once:false,amount:0.7}}
         className='mt-8 space-x-4'>
           <a href='https://www.linkedin.com/in/hariharan-ss-525aa7329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' className='bg-gradient-to-r from-green-400 to-blue-500 text-white 

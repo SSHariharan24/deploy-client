@@ -28,17 +28,29 @@ export const Service = () => {
     <div  className='container mx-auto px-8 md:px-16 lg:px-24'>
         <motion.h2
         variants={fadeIn("right",0.2)}
-        initial="hidden"
+        initial={{opacity:0}}
         whileInView={"show"}
+        whileTap="tap"
+      exit="exit"
         viewport={{once:false,amount:0.7}}
         className='text-4xl font-bold text-center mb-12'> My Services</motion.h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <motion.div 
+        variants={fadeIn("right",0.5)}
+        initial={{opacity:0.5}}
+        whileInView={"show"}
+        // whileHover="newhover1"
+        whileTap="tap"
+      exit="exit"
+        viewport={{once:false,amount:0.7}}
+        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {services.map(service => (
               <motion.div 
-              variants={fadeIn("right",0.2)}
-        initial="hidden"
+              variants={fadeIn("right",0.5)}
+        initial={{opacity:0}}
         whileInView={"show"}
         whileHover="newhover1"
+        whileTap="tap"
+      exit="exit"
         viewport={{once:false,amount:0.7}}
               key={service.id} className='bg-gray-800 px-6 pb-6 rounded-lg hover:shadow-lg 
               transform-transform duration-300 hover:scale-105'>
@@ -56,7 +68,7 @@ export const Service = () => {
               <a href="#" className="mt-4 inline-block text-green-400 hover:text-blue-500">Read More</a>
               </motion.div>  
             ))}
-        </div>
+        </motion.div>
         </div>
         </div>
   )

@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-8">
       <motion.div
-      variants={fadeIn("left",0.2)}
-      initial="hidden"
+      variants={fadeIn("right",0.2)}
+      initial={{opacity:0}}
       whileInView={"show"}
       viewport={{once:false,amount:0.7}}
       className="container mx-auto px-8 md:px-16 lg:px-24">

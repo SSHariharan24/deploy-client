@@ -70,7 +70,7 @@ export const Projects = () => {
     <div className='container mx-auto px-8 md:px-16 lg:px-24'>
         <motion.h2 
         variants={fadeIn("right",0.2)}
-        initial="hidden"
+        initial={{opacity:0}}
         whileInView={"show"}
         viewport={{once:false,amount:0.7}}
         className='text-4xl font-bold text-center mb-12'> My Projects</motion.h2>
@@ -79,7 +79,7 @@ export const Projects = () => {
         {projects.map((project) => (
             <motion.div
             variants={fadeIn("right",0.2)}
-    initial="hidden"
+    initial={{opacity:0}}
     whileInView={"show"}
     whileHover="newhover1"
     viewport={{once:false,amount:0.7}}
