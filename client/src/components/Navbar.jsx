@@ -32,7 +32,7 @@ export const Navbar = () => {
     >
       <div className="container py-3 flex justify-between items-center">
         {/* Brand */}
-        <div className="text-2xl font-bold">Hariharan</div>
+        <div className="hidden lg:block text-2xl font-bold">Hariharan</div>
 
         {/* Links for Desktop */}
         <div className="hidden md:flex space-x-6">
