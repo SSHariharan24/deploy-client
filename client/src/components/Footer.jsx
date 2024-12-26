@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {fadeIn} from './variants.js'
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-8">
+    <footer className="bg-black text-white dark:bg-gray-800 dark:text-white  py-8">
       <motion.div
       variants={fadeIn("right",0.2)}
       initial={{opacity:0}}

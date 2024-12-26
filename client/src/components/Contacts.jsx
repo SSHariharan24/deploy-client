@@ -47,10 +47,10 @@ export const Contacts = () => {
   };
 
   return (
-    <div className="bg-black text-white py-20" id="Contacts">
+    <div className="bg-black text-white dark:bg-gray-800 dark:text-white  py-20" id="Contacts">
       <motion.div
       variants={fadeIn("right",0.2)}
-      initial={{opacity:0.5}}
+      initial={{opacity:0}}
       whileInView={"show"}
       viewport={{once:false,amount:0.7}}
       className="container mx-auto px-8 md:px-16 lg:px-24">

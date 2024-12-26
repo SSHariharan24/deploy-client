@@ -10,3 +10,15 @@ body, html {
     padding: 0;
     overflow-x: hidden;
   }
+
+  .expanded {
+    height: auto;
+    transition: height 0.3s ease-in-out, transform 0.3s;
+  }
+  
+  .collapsed {
+    height: fit-content;
+    /* overflow: hidden; */
+    transition: height 0.3s ease-in-out, transform 0.3s;
+  }
+  

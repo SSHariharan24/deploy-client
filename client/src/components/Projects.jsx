@@ -66,7 +66,7 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <div className='home_data bg-black text-white py-20' id="Projects">
+    <div className='home_data bg-black text-white dark:bg-gray-800 dark:text-white text-center py-28' id="Projects">
     <div className='container mx-auto px-8 md:px-16 lg:px-24'>
         <motion.h2 
         variants={fadeIn("right",0.2)}
@@ -83,7 +83,7 @@ export const Projects = () => {
     whileInView={"show"}
     whileHover="newhover1"
     viewport={{once:false,amount:0.7}}
-            key={project.id} className="bg-gray-800 p-6 rounded-lg hover:shadow-lg 
+            key={project.id} className="bg-gray-700 p-6 rounded-lg hover:shadow-lg 
             transform transition-transform duration-0 hover:scale-105">
               <img src={project.image} alt={project.name} className="rounded-lg mb-4 
               w-full h-48 object-cover" />

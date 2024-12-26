@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {fadeIn} from './variants.js'
 export const About = () => {
   return (
-    <div className='bg-black text-white py-20' id="About">
+    <div className='bg-black text-white dark:bg-gray-800 dark:text-white text-center py-24' id="About">
         <div className='container mx-auto px-8 md:px-16 lg:px-24'>
             <motion.h2  variants={fadeIn("left",0.5)}
                 initial={{opacity:0}}
