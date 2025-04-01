@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "./variants.js";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import { useEffect } from "react";
 const services = [
   {
     id: 1,
@@ -19,7 +22,7 @@ const services = [
   },
   {
     id: 3,
-    title: "MERN-Stack Development",
+    title: "MERN-Stack",
     description: "Combining both frontend and backend development skills.",
     fullDescription:
       "MERN stack uses MongoDB (database), Express.js (backend framework), React (frontend library), and Node.js (runtime) to build full-stack web applications. This stack is efficient for building modern, scalable apps.",
@@ -27,6 +30,14 @@ const services = [
 ];
 
 export const Service = () => {
+  useEffect(() => {
+      AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          offset: 100, // Offset in px before animation triggers
+          easing: "ease-in-out", // Type of animation easing
+          once: true, // Animation triggers only once per scroll
+      });
+  }, []);
   const [activeServiceId, setActiveServiceId] = useState(null);
 
   const toggleReadMore = (id) => {
@@ -37,6 +48,7 @@ export const Service = () => {
     <div className="dark:bg-black  dark:text-white text-center py-24" id="Service">
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         <motion.h2
+        data-aos="fade-down"
           variants={fadeIn("right", 0.2)}
           initial={{ opacity: 0 }}
           whileInView="show"
@@ -47,6 +59,7 @@ export const Service = () => {
           My Services
         </motion.h2>
         <motion.div
+        data-aos="fade-left"
           variants={fadeIn("right", 0.5)}
           initial={{ opacity: 0.5 }}
           whileInView="show"

@@ -3,6 +3,10 @@ import axios from 'axios';
 import { FaEnvelope, FaMapMarkedAlt, FaPhone } from 'react-icons/fa';
 import { motion } from "framer-motion";
 import {fadeIn} from './variants.js'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import { useEffect } from "react";
 // const backend = process.env.REACT_APP_BACKEND_URL
 export const Contacts = () => {
   // State to manage form data
@@ -45,34 +49,43 @@ export const Contacts = () => {
       setStatusMessage('An error occurred. Please try again later.');
     }
   };
-
+useEffect(() => {
+    AOS.init({
+        duration: 1000, // Animation duration in milliseconds
+        offset: 100, // Offset in px before animation triggers
+        easing: "ease-in-out", // Type of animation easing
+        once: true, // Animation triggers only once per scroll
+    });
+}, []);
   return (
     <div className="dark:bg-black  dark:text-white  py-20" id="Contacts">
       <motion.div
-      variants={fadeIn("right",0.2)}
-      initial={{opacity:0}}
-      whileInView={"show"}
-      viewport={{once:false,amount:0.7}}
-      className="container mx-auto px-8 md:px-16 lg:px-24">
+      // variants={fadeIn("right",0.2)}
+      // initial={{opacity:1}}
+      // whileInView={"show"}
+      // viewport={{once:false,amount:0.7}}
+      className="container mx-auto px-8 md:px-16 lg:px-24" initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1 }}>
         <motion.h2
-        variants={fadeIn("right",0.2)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{once:false,amount:0.7}}
-        className="text-4xl text-black dark:text-white font-bold text-center mb-12">Contact Me</motion.h2>
+        // variants={fadeIn("right",0.2)}
+        // initial="hidden"
+        // whileInView={"show"}
+        // viewport={{once:false,amount:0.7}}
+        className="text-4xl text-black dark:text-white font-bold text-center mb-12" data-aos="zoom-in">Contact Me</motion.h2>
         <motion.div 
-         variants={fadeIn("right",0.5)}
-                        initial="hidden"
-                        whileInView={"show"}
-                        // whileHover="hover"
-                        viewport={{once:false,amount:0.7}}
+        //  variants={fadeIn("right",0.5)}
+        //                 initial="hidden"
+        //                 whileInView={"show"}
+        //                 // whileHover="hover"
+        //                 viewport={{once:false,amount:0.7}}
         className="flex flex-col md:flex-row items-center md:space-x-12">
           <motion.div
-          variants={fadeIn("right",0.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{once:false,amount:0.7}}
-          className="flex-1">
+          // variants={fadeIn("right",0.2)}
+          // initial="hidden"
+          // whileInView={"show"}
+          // viewport={{once:false,amount:0.7}}
+          className="flex-1" data-aos="fade-right">
             <h3 className='text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
             from-green-400 to-blue-500 mb-4'>Let's Talk</h3>
             <p>I'm open to discussing web development projects or partnership opportunities.</p>
@@ -93,14 +106,14 @@ export const Contacts = () => {
           </motion.div>
           <div className='flex-1 w-full'>
             <motion.form
-            variants={fadeIn("right",0.2)}
-                    initial="hidden"
-                    whileInView={"show"}
-                    // whileHover="newhover1"
-                    whileTap="tap"
-                  exit="exit"
-                    viewport={{once:false,amount:0.7}}
-            className='space-y-4' onSubmit={handleSubmit}>
+            // variants={fadeIn("right",0.2)}
+            //         initial="hidden"
+            //         whileInView={"show"}
+            //         // whileHover="newhover1"
+            //         whileTap="tap"
+            //       exit="exit"
+            //         viewport={{once:false,amount:0.7}}
+            className='space-y-4' data-aos="fade-left" onSubmit={handleSubmit}>
                 {statusMessage && <p>{statusMessage}</p>}
                 <div>
                     <label htmlFor="name" className='block mb-2'>Your Name</label>

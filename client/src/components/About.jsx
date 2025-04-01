@@ -1,33 +1,45 @@
 import React from 'react'
 import AboutImage from '../assets/hari.jpg'
 import { motion } from "framer-motion";
-
 import {fadeIn} from './variants.js'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import { useEffect } from "react";
 export const About = () => {
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Animation duration in milliseconds
+            offset: 100, // Offset in px before animation triggers
+            easing: "ease-in-out", // Type of animation easing
+            once: true, // Animation triggers only once per scroll
+        });
+    }, []);
   return (
     <div className='dark:bg-black text-white  dark:text-white text-center py-24' id="About">
         <div className='container mx-auto px-8 md:px-16 lg:px-24'>
-            <motion.h2  variants={fadeIn("left",0.5)}
+            <motion.h2  variants={fadeIn("left",0.2)}
                 initial={{opacity:0}}
                 whileInView={"show"}
                 viewport={{once:false,amount:0.7}}
                  className='text-4xl text-black dark:text-white font-bold text-center mb-12'>About Me</motion.h2>
             <motion.div 
-             variants={fadeIn("up",0.5)}
+             variants={fadeIn("up",0.2)}
              initial={{opacity:1}}
              whileInView={"show"}
             //  whileHover="hover"
              viewport={{once:false,amount:0.7}}
             className='flex flex-col md:flex-row items-center md:space-x-12'>
                 <motion.img
-                variants={fadeIn("up",0.5)}
+                data-aos="flip-right"
+                variants={fadeIn("up",0.2)}
                 initial={{opacity:0}}
                 whileInView={"show"}
                 whileHover="hover"
                 viewport={{once:false,amount:0.7}}
                 src={AboutImage} alt="" className='w-72 h-80 rounded object-cover mb-8 md:mb-0' />
                <div className='flex-1'>
-                 <p className='text-lg text-black dark:text-white mb-8'>
+                 <p className='text-lg text-black dark:text-white mb-8' data-aos="fade-left">
                 I am a passionate full-stack developer with a focus on building
               modern and responsive web applications. With a strong foundation
               in both frontend and backend technologies, I strive to create
@@ -36,7 +48,7 @@ export const About = () => {
 
                 <div className='space-y-4'>
                     <div className='flex items-center'>
-                        <label htmlFor="htmlandcss" className='w-2/12 text-black dark:text-white'>HTML CSS & JS</label>
+                        <label htmlFor="htmlandcss" className='w-2/12 text-black dark:text-white'data-aos="zoom-in">HTML CSS & JS</label>
                         <div className='grow bg-gray-800 rounded-full h-2.5'>
                             <div className='bg-gradient-to-r from-green-400 to-blue-500 h-2.5 rounded-full
                             transform transition-transform duration-300 hover:scale-105 w-10/12'>
@@ -46,7 +58,7 @@ export const About = () => {
                     </div>
 
                     <div className='flex items-center'>
-                        <label htmlFor="reactjs" className='w-2/12 text-black dark:text-white'>REACT JS</label>
+                        <label htmlFor="reactjs" className='w-2/12 text-black dark:text-white' data-aos="zoom-in">REACT JS</label>
                         <div className='grow bg-gray-800 rounded-full h-2.5'>
                             <div className='bg-gradient-to-r from-green-400 to-blue-500 h-2.5 rounded-full
                             transform transition-transform duration-300 hover:scale-105 w-11/12'>
@@ -56,7 +68,7 @@ export const About = () => {
                     </div>
 
                     <div className='flex items-center'>
-                        <label htmlFor="nodeandexpressjs" className='w-2/12 text-black dark:text-white'>NODE & EXPRESS JS</label>
+                        <label htmlFor="nodeandexpressjs" className='w-2/12 text-black dark:text-white' data-aos="zoom-in">NODE & EXPRESS JS</label>
                         <div className='grow bg-gray-800 rounded-full h-2.5'>
                             <div className='bg-gradient-to-r from-green-400 to-blue-500 h-2.5 rounded-full
                             transform transition-transform duration-300 hover:scale-105 w-9/12'>
@@ -66,7 +78,7 @@ export const About = () => {
                     </div>
 
                     <div className='flex items-center'>
-                        <label htmlFor="Mongodb" className='w-2/12 text-black dark:text-white'>MONGO DB</label>
+                        <label htmlFor="Mongodb" className='w-2/12 text-black dark:text-white' data-aos="zoom-in">MONGO DB</label>
                         <div className='grow bg-gray-800 rounded-full h-2.5'>
                             <div className='bg-gradient-to-r from-green-400 to-blue-500 h-2.5 rounded-full
                             transform transition-transform duration-300 hover:scale-105 w-10/12'>
@@ -84,7 +96,7 @@ export const About = () => {
             //  whileHover="hover"
              viewport={{once:false,amount:0.7}}
             className='mt-12 flex justify-around text-center'>
-                <div>
+                <div data-aos="zoom-in">
                     <h3 className='text-2xl font-bold text-transparent bg-clip-text
                     bg-gradient-to-r from-green-400 to-blue-500'>
                     3+
@@ -92,7 +104,7 @@ export const About = () => {
                     <p className='text-black dark:text-white'>Months Intern Experience</p>
                 </div>
 
-                <div>
+                <div data-aos="zoom-in"> 
                     <h3 className='text-2xl font-bold text-transparent bg-clip-text
                     bg-gradient-to-r from-green-400 to-blue-500'>
                     10+

@@ -2,8 +2,20 @@ import React from 'react';
 import HeroImage from '../assets/hero-images.jpg';
 import { motion } from "framer-motion";
 import { fadeIn } from './variants.js';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import { useEffect } from "react";
 export const Hero = () => {
+
+  useEffect(() => {
+    AOS.init({
+        duration: 1000, // Animation duration in milliseconds
+        offset: 100, // Offset in px before animation triggers
+        easing: "ease-in-out", // Type of animation easing
+        once: true, // Animation triggers only once per scroll
+    });
+}, []);
   return (
     <div className="dark:bg-black text-black  dark:text-white  text-center py-28" id="Hero">
       <motion.img
@@ -15,10 +27,12 @@ export const Hero = () => {
         exit="exit"
         viewport={{ once: false, amount: 0.7 }}
         src={HeroImage}
+        data-aos="fade-down"
         alt=""
         className="mx-auto mb-8 w-48 h-48 rounded-full object-cover transition-transform duration-0 hover:scale-105"
       />
       <motion.h1
+
         variants={fadeIn("left", 0.2)}
         initial="hidden"
         whileInView={"show"}
@@ -28,8 +42,28 @@ export const Hero = () => {
         className="text-4xl font-bold"
       >
         I'm {""}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">Hariharan</span>
-        , Full-Stack Developer
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+        <TypeAnimation
+                        sequence={[
+                            "Hariharan",
+                            130
+                        ]}
+                        wrapper="span"
+                        speed={250}
+                        cursor={true}
+                        repeat={Infinity} // Ensures the animation restarts
+                    />
+        </span>
+        <TypeAnimation
+                        sequence={[
+                            ", Full-Stack Developer",
+                            130
+                        ]}
+                        wrapper="span"
+                        speed={250}
+                        cursor={true}
+                        repeat={Infinity} // Ensures the animation restarts
+                    />
       </motion.h1>
       <motion.p
         variants={fadeIn("right", 0.2)}

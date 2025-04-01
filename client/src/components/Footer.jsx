@@ -3,16 +3,28 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import 'remixicon/fonts/remixicon.css';
 import { motion } from "framer-motion";
 import {fadeIn} from './variants.js'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { TypeAnimation } from 'react-type-animation';
+import { useEffect } from "react";
 const Footer = () => {
+  useEffect(() => {
+      AOS.init({
+          duration: 1000, // Animation duration in milliseconds
+          offset: 100, // Offset in px before animation triggers
+          easing: "ease-in-out", // Type of animation easing
+          once: true, // Animation triggers only once per scroll
+      });
+  }, []);
   return (
     <footer className="dark:bg-black  dark:text-white  py-8">
       <motion.div
-      variants={fadeIn("right",0.2)}
-      initial={{opacity:0}}
-      whileInView={"show"}
-      viewport={{once:false,amount:0.7}}
+      // variants={fadeIn("right",0.2)}
+      // initial={{opacity:0}}
+      // whileInView={"show"}
+      // viewport={{once:false,amount:0.7}}
       className="container mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-4">
+        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-4" data-aos="fade-left">
           <div className="flex-1 mb-4 md:mb-0">
             <h3 className="text-2xl font-bold mb-2">Hariharan s s</h3>
             <p className="text-black dark:text-white">
