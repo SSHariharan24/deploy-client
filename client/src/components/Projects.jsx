@@ -1,5 +1,5 @@
 import React from 'react'
-import chatty from "../assets/chatty.jpg";
+import chats from "../assets/chats.png";
 import foodcart from "../assets/food-cart.png";
 import moviefinder from "../assets/movie-finder.png";
 import weather from "../assets/weather-finder.png";
@@ -37,7 +37,8 @@ const projects = [
     ],
     // technologies: "MONGO-DB,EXPRESS-JS,REACT-JS,NODEJ-S,DAISY-UI,CLOUDINARY,SOCKET-IO",
     descriptions: "Developed a real-time communication platform supporting seamless messaging between users.",
-    image: chatty,
+    image: chats,
+    link:"https://realtime-chat-app-a978.onrender.com",
     github: "https://github.com/SSHariharan24/RealTime-Chat-App.git",
   },
 
@@ -53,6 +54,7 @@ const projects = [
     ],
     // technologies: "MERN USING JWT AUTH AND SIGNIN,SIGNUP,FORGET AND RESETPASSWORD",
     image: pics,
+    link:'https://mern-deploy-client-q86t.onrender.com',
     github: "https://github.com/SSHariharan24/Jwt-auth-and-validation-using-Mern.git",
   },
     
@@ -69,6 +71,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: foodcart,
+      link:"https://sshariharan24.github.io/Food-Cart/",
       github: "https://github.com/SSHariharan24/Food-Cart.git",
     },
     {
@@ -84,6 +87,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: moviefinder,
+      link:"https://sshariharan24.github.io/movie-finder/",
       github: "https://github.com/SSHariharan24/movie-finder.git",
     },
     {
@@ -99,6 +103,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: weather,
+      link:"https://sshariharan24.github.io/weather-finder/",
       github: "https://github.com/SSHariharan24/weather-finder.git",
     },
     {
@@ -114,6 +119,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: qrcode,
+      link:"https://sshariharan24.github.io/QR-Code/",
       github: "https://github.com/SSHariharan24/QR-Code.git",
     },
     {
@@ -129,6 +135,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: currency,
+      link:"https://sshariharan24.github.io/currency-convertor/",
       github: "https://github.com/SSHariharan24/currency-convertor.git",
     },
 
@@ -151,7 +158,7 @@ export const Projects = () => {
         initial={{opacity:0}}
         whileInView={"show"}
         viewport={{once:false,amount:0.7}}
-        className='text-4xl font-bold text-center mb-12'> My Projects</motion.h2>
+        className='text-4xl text-black dark:text-white font-bold text-center mb-12'> My Projects</motion.h2>
         <div 
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' data-aos="fade-left">
         {projects.map((project) => (

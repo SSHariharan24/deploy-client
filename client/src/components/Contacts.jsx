@@ -39,6 +39,8 @@ export const Contacts = () => {
           email: '',
           message: ''
         });
+        console.log(response.status);
+        
         
       } else {
         setStatusMessage('Failed to send the message.');
