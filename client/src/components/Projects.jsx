@@ -1,7 +1,7 @@
 import React from 'react'
 import chats from "../assets/chats.png";
 import foodcart from "../assets/food-cart.png";
-import moviefinder from "../assets/movie-finder.png";
+import moviefinder from "../assets/movie-img.png";
 import weather from "../assets/weather-finder.png";
 import qrcode from "../assets/qr-code.png";
 import currency from "../assets/currency-convetor.png";
@@ -81,14 +81,14 @@ const projects = [
       stack: [
         { name: "React.js", icon: <SiReact /> },
         // { name: "Node.js", icon: <SiNodedotjs /> },
-        { name: "RapidApi", icon: <SiRapid /> },
+        { name: "TmdbApi", icon: <SiRapid /> },
         // { name: "MongoDB", icon: <SiMongodb /> },
         { name: "CSS", icon: <SiCss3 /> },
       ],
       // technologies: "REACT JS",
       image: moviefinder,
-      link:"https://sshariharan24.github.io/movie-finder/",
-      github: "https://github.com/SSHariharan24/movie-finder.git",
+      link:"https://movie-app-new-wheat.vercel.app/",
+      github: "https://github.com/SSHariharan24/Movie-App-New.git",
     },
     {
       id: 5,
