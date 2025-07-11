@@ -1,6 +1,6 @@
 import React from 'react'
 import chats from "../assets/chats.png";
-import foodcart from "../assets/food-cart.png";
+import foodcart from "../assets/foods.png";
 import moviefinder from "../assets/movie-img.png";
 import weather from "../assets/weather-finder.png";
 import qrcode from "../assets/qr-code.png";
@@ -38,7 +38,7 @@ const projects = [
     // technologies: "MONGO-DB,EXPRESS-JS,REACT-JS,NODEJ-S,DAISY-UI,CLOUDINARY,SOCKET-IO",
     descriptions: "Developed a real-time communication platform supporting seamless messaging between users.",
     image: chats,
-    link:"https://realtime-chat-app-a978.onrender.com",
+    link:"https://chatty-app-delta.vercel.app",
     github: "https://github.com/SSHariharan24/RealTime-Chat-App.git",
   },
 
@@ -71,7 +71,7 @@ const projects = [
       ],
       // technologies: "REACT JS",
       image: foodcart,
-      link:"https://sshariharan24.github.io/Food-Cart/",
+      link:"https://food-cart-seven-fawn.vercel.app/",
       github: "https://github.com/SSHariharan24/Food-Cart.git",
     },
     {
