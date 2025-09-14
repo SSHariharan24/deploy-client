@@ -40,10 +40,10 @@ export const Hero = () => {
       id="Hero"
     >
       <motion.img
-        variants={fadeIn("up", 0.2)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
+        // variants={fadeIn("up", 0.2)}
+        // initial="hidden"
+        // whileInView="show"
+        // viewport={{ once: true, amount: 0.6 }}
         src={HeroImage}
         alt="Hero"
         className="mx-auto mb-8 
@@ -59,10 +59,10 @@ export const Hero = () => {
       />
 
       <motion.h1
-        variants={fadeIn("down", 0.3)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
+        // variants={fadeIn("up", 0.3)}
+        // initial="hidden"
+        // whileInView="show"
+        // viewport={{ once: true, amount: 0.6 }}
         className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug"
       >
         I'm {""}
