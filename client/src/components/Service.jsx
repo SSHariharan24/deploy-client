@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "./variants.js";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { TypeAnimation } from 'react-type-animation';
+import { TypeAnimation } from "react-type-animation";
 import { useEffect } from "react";
 const services = [
   {
@@ -31,12 +31,12 @@ const services = [
 
 export const Service = () => {
   useEffect(() => {
-      AOS.init({
-          duration: 1000, // Animation duration in milliseconds
-          offset: 100, // Offset in px before animation triggers
-          easing: "ease-in-out", // Type of animation easing
-          once: true, // Animation triggers only once per scroll
-      });
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      offset: 100, // Offset in px before animation triggers
+      easing: "ease-in-out", // Type of animation easing
+      once: true, // Animation triggers only once per scroll
+    });
   }, []);
   const [activeServiceId, setActiveServiceId] = useState(null);
 
@@ -45,10 +45,13 @@ export const Service = () => {
   };
 
   return (
-    <div className="dark:bg-black  dark:text-white text-center py-24" id="Service">
+    <div
+      className="dark:bg-black  dark:text-white text-center py-24"
+      id="Service"
+    >
       <div className="container mx-auto px-8 md:px-16 lg:px-24">
         <motion.h2
-        data-aos="fade-down"
+          data-aos="fade-down"
           variants={fadeIn("right", 0.2)}
           initial={{ opacity: 0 }}
           whileInView="show"
@@ -59,7 +62,7 @@ export const Service = () => {
           My Services
         </motion.h2>
         <motion.div
-        data-aos="fade-left"
+          data-aos="fade-left"
           variants={fadeIn("right", 0.5)}
           initial={{ opacity: 0.5 }}
           whileInView="show"
@@ -70,31 +73,36 @@ export const Service = () => {
           {services.map((service) => (
             <motion.div
               key={service.id}
-              variants={fadeIn("right", 0.5)}
+              variants={fadeIn("up", 0.5)}
               initial={{ opacity: 0 }}
               whileInView="show"
-              whileHover="newhover1"
+              whileHover={{ scale: 1.05 }}
               exit="exit"
               viewport={{ once: false, amount: 0.7 }}
-              className={`dark:bg-gray-700 bg-gray-300 px-6 pb-6 rounded-lg hover:shadow-lg transform duration-300 hover:scale-105 ${
-                activeServiceId === service.id ? "expanded" : "collapsed"
-              }`}
+              className={`dark:bg-gray-800 bg-white border border-gray-200 dark:border-gray-700 
+                          px-8 py-10 rounded-2xl shadow-md hover:shadow-xl 
+                          transition-all duration-300 flex flex-col justify-between ${
+                            activeServiceId === service.id
+                              ? "expanded"
+                              : "collapsed"
+                          }`}
             >
-              <h3
-                className="mt-2 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500"
-              >
+              <h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-4">
                 {service.title}
               </h3>
-              <p className="mt-2 dark:text-gray-300">
+              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">
                 {service.description}
                 {activeServiceId === service.id && (
-                  <span className="dark:text-gray-300"> {service.fullDescription}</span>
+                  <span className="dark:text-gray-300">
+                    {" "}
+                    {service.fullDescription}
+                  </span>
                 )}
               </p>
               <a
                 href="#Service"
                 onClick={() => toggleReadMore(service.id)}
-                className="mt-4 inline-block text-green-400 hover:text-blue-500"
+                className="mt-6 inline-block text-green-500 hover:text-blue-500 font-semibold transition-colors duration-200"
               >
                 {activeServiceId === service.id ? "Read Less" : "Read More"}
               </a>
