@@ -1,13 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/img.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-  </head>
-  <body class="bg-white text-black dark:bg-black dark:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/img.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hariharan | Full-Stack Developer Portfolio</title>
+  
+  <!-- SEO & OpenGraph Meta Tags -->
+  <meta name="description" content="Hariharan | Full-Stack Developer specializing in crafting high-performance, responsive web applications using the MERN stack." />
+  <meta name="keywords" content="MERN Stack, React, Node.js, Express, MongoDB, JavaScript, TypeScript, Portfolio, Web Developer" />
+  <meta name="author" content="Hariharan" />
+  <meta property="og:title" content="Hariharan | Full-Stack Developer Portfolio" />
+  <meta property="og:description" content="Crafting high-performance, responsive web applications using the MERN stack." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://github.com/SSHariharan24" />
+  <meta property="og:image" content="/hero-images-BlUEO-yw.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hariharan | Full-Stack Developer Portfolio" />
+  <meta name="twitter:description" content="Crafting high-performance, responsive web applications using the MERN stack." />
+
+  
+  <!-- Google Fonts: Outfit and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Clear Caching and Service Workers from other applications on port 5173 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister().then((success) => {
+            if (success) {
+              console.log('Unregistered old service worker:', registration);
+              window.location.reload();
+            }
+          });
+        }
+      });
+    }
+    if (window.caches) {
+      caches.keys().then((keys) => {
+        keys.forEach((key) => caches.delete(key));
+      });
+    }
+  </script>
+</head>
+
+<body class="bg-white text-black dark:bg-black dark:text-white">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

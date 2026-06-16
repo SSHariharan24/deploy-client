@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import chats from "../assets/chats.png";
 import blog from "../assets/blog.png";
 import foodcart from "../assets/foods.png";
@@ -6,13 +7,13 @@ import weather from "../assets/weather-finder.png";
 import qrcode from "../assets/qr-code.png";
 import currency from "../assets/currency-convetor.png";
 import pics from "../assets/img.jpg";
-import { motion } from "framer-motion";
+import imgs1 from "../assets/imgs1.png";
+import imgs2 from "../assets/imgs2.png";
+import { motion, AnimatePresence } from "framer-motion";
 import { fadeIn } from "./variants.js";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { TypeAnimation } from "react-type-animation";
-import { useEffect } from "react";
-import { FaExternalLinkAlt, FaGithub, FaInfoCircle } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import {
   SiCloudinary,
   SiRapid,
@@ -24,10 +25,28 @@ import {
   SiCss3,
   SiTailwindcss,
 } from "react-icons/si";
+
 const projects = [
   {
     id: 1,
+    name: "Billing Invoice System",
+    category: "Full-Stack",
+    stack: [
+      { name: "React.js", icon: <SiReact /> },
+      { name: "Node.js", icon: <SiNodedotjs /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "Tailwindcss", icon: <SiTailwindcss /> },
+    ],
+    descriptions: "Developed an enterprise billing application featuring dynamic invoicing calculations, secure client billing data persistence, and interactive report aggregates.",
+    image: imgs1,
+    hoverImage: imgs2,
+    link: "",
+    github: ""
+  },
+  {
+    id: 2,
     name: "Real Time Chat-App",
+    category: "Full-Stack",
     stack: [
       { name: "React.js", icon: <SiReact /> },
       { name: "Node.js", icon: <SiNodedotjs /> },
@@ -36,128 +55,107 @@ const projects = [
       { name: "Tailwindcss", icon: <SiTailwindcss /> },
       { name: "Cloudinary", icon: <SiCloudinary /> },
     ],
-    // technologies: "MONGO-DB,EXPRESS-JS,REACT-JS,NODEJ-S,DAISY-UI,CLOUDINARY,SOCKET-IO",
-    descriptions:
-      "Developed a real-time communication platform supporting seamless messaging between users.",
+    descriptions: "Developed a real-time communication platform supporting seamless messaging and image sharing.",
     image: chats,
     link: "https://chatty-app-delta.vercel.app",
     github: "https://github.com/SSHariharan24/RealTime-Chat-App.git",
   },
-
   {
-    id: 2,
-    name: "CRUD Operation",
-    descriptions:
-      "Implemented a secure sign-in and sign-up system with role-based redirection for admin and users Enabled CRUD operations ",
+    id: 3,
+    name: "Secure CRUD with JWT",
+    category: "Full-Stack",
     stack: [
       { name: "React.js", icon: <SiReact /> },
       { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Tailwindcss", icon: <SiTailwindcss /> },
     ],
-    // technologies: "MERN USING JWT AUTH AND SIGNIN,SIGNUP,FORGET AND RESETPASSWORD",
+    descriptions: "Implemented secure user auth with role redirection, JWT verification, password reset, and full CRUD dashboard.",
     image: pics,
     link: "https://mern-deploy-client-q86t.onrender.com",
-    github:
-      "https://github.com/SSHariharan24/Jwt-auth-and-validation-using-Mern.git",
+    github: "https://github.com/SSHariharan24/Jwt-auth-and-validation-using-Mern.git",
   },
-
   {
-    id: 3,
-    name: "Food-Cart",
-    descriptions:
-      "Built a recipe search web app using React, enabling users to find and view recipes with detailed instructions and ingredients.",
+    id: 4,
+    name: "Recipe Search Food-Cart",
+    category: "Frontend",
     stack: [
       { name: "React.js", icon: <SiReact /> },
       { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "RapidApi", icon: <SiRapid /> },
-      // { name: "MongoDB", icon: <SiMongodb /> },
       { name: "CSS", icon: <SiCss3 /> },
     ],
-    // technologies: "REACT JS",
+    descriptions: "Built a food recipe discovery app displaying cooking instructions and ingredient cards via external APIs.",
     image: foodcart,
     link: "https://food-cart-seven-fawn.vercel.app/",
     github: "https://github.com/SSHariharan24/Food-Cart.git",
   },
   {
-    id: 4,
-    name: "Movie-Finder",
-    descriptions:
-      "Developed a movie search web app using React, allowing users to discover movies with detailed information,Integrated API for real-time movie data and optimized user interaction.",
+    id: 5,
+    name: "Movie Finder Dashboard",
+    category: "Frontend",
     stack: [
       { name: "React.js", icon: <SiReact /> },
-      // { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "TmdbApi", icon: <SiRapid /> },
-      // { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "TMDB API", icon: <SiRapid /> },
       { name: "CSS", icon: <SiCss3 /> },
     ],
-    // technologies: "REACT JS",
+    descriptions: "Integrated TMDB database to discover and view detailed trending movies, ratings, and trailers dynamically.",
     image: moviefinder,
     link: "https://movie-app-new-wheat.vercel.app/",
     github: "https://github.com/SSHariharan24/Movie-App-New.git",
   },
   {
-    id: 5,
-    name: "Weather-Finder",
-    descriptions:
-      "Developed a weather finder web app using React, allowing users to check real-time weather updates by searching for any location. Integrated weather APIs for accurate forecasts and presented data in an easy-to-read, interactive interface.",
+    id: 6,
+    name: "Live Weather Tracker",
+    category: "Frontend",
     stack: [
       { name: "React.js", icon: <SiReact /> },
-      // { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "RapidApi", icon: <SiRapid /> },
-      // { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "Weather API", icon: <SiRapid /> },
       { name: "CSS", icon: <SiCss3 /> },
     ],
-    // technologies: "REACT JS",
+    descriptions: "Displays real-time weather stats, temperature forecast maps, and wind speed updates for searched locations.",
     image: weather,
     link: "https://sshariharan24.github.io/weather-finder/",
     github: "https://github.com/SSHariharan24/weather-finder.git",
   },
   {
-    id: 6,
-    name: "QR-Code Generator",
-    descriptions:
-      "Created a QR code scanner web app using React, enabling users to scan and decode QR codes directly from their devices. Integrated real-time scanning functionality and displayed decoded information in an intuitive interface.",
+    id: 7,
+    name: "QR-Code Generator & Scanner",
+    category: "Utility",
     stack: [
       { name: "React.js", icon: <SiReact /> },
-      // { name: "Node.js", icon: <SiNodedotjs /> },
       { name: "RapidApi", icon: <SiRapid /> },
-      // { name: "MongoDB", icon: <SiMongodb /> },
       { name: "CSS", icon: <SiCss3 /> },
     ],
-    // technologies: "REACT JS",
+    descriptions: "Created scanner application utility allowing users to scan QR codes or download newly generated ones.",
     image: qrcode,
     link: "https://sshariharan24.github.io/QR-Code/",
     github: "https://github.com/SSHariharan24/QR-Code.git",
   },
   {
-    id: 7,
-    name: "Currency-Convetor",
-    descriptions:
-      "Built a currency converter web app using React, enabling users to convert between multiple currencies in real-time. Integrated currency exchange rate APIs for accurate conversions and provided a simple, user-friendly interface.",
+    id: 8,
+    name: "Currency Converter Tool",
+    category: "Utility",
     stack: [
       { name: "React.js", icon: <SiReact /> },
-      // { name: "Node.js", icon: <SiNodedotjs /> },
-      { name: "RapidApi", icon: <SiRapid /> },
-      // { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "Exchange API", icon: <SiRapid /> },
       { name: "CSS", icon: <SiCss3 /> },
     ],
-    // technologies: "REACT JS",
+    descriptions: "Calculates exchange conversions in real-time using current international conversion rates.",
     image: currency,
     link: "https://sshariharan24.github.io/currency-convertor/",
     github: "https://github.com/SSHariharan24/currency-convertor.git",
   },
   {
-    id: 8,
-    name: "Blog-App",
+    id: 9,
+    name: "Nuxt.js Local Blog Engine",
+    category: "Full-Stack",
     stack: [
-      { name: "nuxt.js", icon: <SiNuxtdotjs /> },
+      { name: "Nuxt.js", icon: <SiNuxtdotjs /> },
       { name: "Tailwindcss", icon: <SiTailwindcss /> },
       { name: "Cloudinary", icon: <SiCloudinary /> },
     ],
-    // technologies: "MONGO-DB,EXPRESS-JS,REACT-JS,NODEJ-S,DAISY-UI,CLOUDINARY,SOCKET-IO",
-    descriptions:
-      "A simple Nuxt.js Blog App to add, edit, delete, and list blog posts. Uses a local JSON file for data storage—no backend required. Built with Vue.js, HTML, CSS, and JavaScript to demonstrate CRUD operations in a fully frontend application.",
+    descriptions: "A Vue/Nuxt.js blog setup utilizing local database configurations to create, list, edit, and filter articles.",
     image: blog,
     link: "https://blog-apps-d35q.onrender.com/",
     github: "https://github.com/SSHariharan24/Blog-Apps.git",
@@ -165,104 +163,152 @@ const projects = [
 ];
 
 export const Projects = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = ["All", "Full-Stack", "Frontend", "Utility"];
+
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
-      offset: 100, // Offset in px before animation triggers
-      easing: "ease-in-out", // Type of animation easing
-      once: true, // Animation triggers only once per scroll
+      duration: 1000,
+      offset: 100,
+      easing: "ease-in-out",
+      once: true,
     });
   }, []);
+
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter((project) => project.category === activeCategory);
+
   return (
     <div
-      className="home_data text-white dark:bg-black dark:text-white text-center py-20"
+      className="relative py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 overflow-hidden"
       id="Projects"
     >
-      <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        {/* Heading */}
-        <motion.h2
-          variants={fadeIn("right", 0.2)}
-          initial={{ opacity: 0 }}
-          whileInView={"show"}
-          viewport={{ once: false, amount: 0.7 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white text-center mb-14"
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+        
+        {/* Title */}
+        <motion.div
+          variants={fadeIn("up", 0.1)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-12"
         >
-          My Projects
-        </motion.h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            My <span className="text-gradient-primary">Projects</span>
+          </h2>
+          <div className="h-1.5 w-16 bg-gradient-to-r from-indigo-500 to-pink-500 rounded-full mx-auto mt-4"></div>
+        </motion.div>
 
-        {/* Projects Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
-          data-aos="fade-left"
-        >
-          {projects.map((project) => (
-            <motion.div
-              variants={fadeIn("up", 0.2)}
-              initial={{ opacity: 0 }}
-              whileInView={"show"}
-              whileHover={{ scale: 1.05 }}
-              viewport={{ once: false, amount: 0.5 }}
-              key={project.id}
-              className="dark:bg-gray-800 bg-white border border-gray-200 dark:border-gray-700 
-                     p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col"
+        {/* Category Filter Bar */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 border shadow-sm ${
+                activeCategory === category
+                  ? "bg-indigo-600 border-indigo-600 text-white shadow-indigo-500/20 scale-105"
+                  : "bg-white/50 dark:bg-slate-900/30 border-slate-200/50 dark:border-slate-800/50 text-slate-600 dark:text-slate-300 hover:border-indigo-400 dark:hover:border-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-400"
+              }`}
             >
-              {/* Project Image */}
-              <img
-                src={project.image}
-                alt={project.name}
-                className="rounded-xl mb-5 w-full h-52 object-cover shadow-sm"
-              />
-
-              {/* Project Title */}
-              <h3 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-3">
-                {project.name}
-              </h3>
-
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.stack.map((tech, idx) => (
-                  <motion.span
-                    key={idx}
-                    className="bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-white 
-                           text-sm px-3 py-1 rounded-full flex items-center gap-1 shadow-sm"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {tech.icon} {tech.name}
-                  </motion.span>
-                ))}
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-6 line-clamp-4">
-                {project.descriptions}
-              </p>
-
-              {/* Buttons */}
-              <div className="flex justify-center gap-4 mt-auto">
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white font-semibold 
-                         rounded-lg hover:from-purple-600 hover:to-blue-600 transition-all duration-300 flex items-center gap-2"
-                  whileHover={{ scale: 1.07 }}
-                >
-                  <FaExternalLinkAlt /> Live Demo
-                </motion.a>
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 bg-gradient-to-r from-gray-600 to-gray-800 text-white font-semibold 
-                         rounded-lg hover:from-gray-700 hover:to-black transition-all duration-300 flex items-center gap-2"
-                  whileHover={{ scale: 1.07 }}
-                >
-                  <FaGithub /> GitHub
-                </motion.a>
-              </div>
-            </motion.div>
+              {category}
+            </button>
           ))}
         </div>
+
+        {/* Projects Grid */}
+        <motion.div 
+          layout 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                key={project.id}
+                className="glass-panel group rounded-3xl p-5 border border-slate-200/40 dark:border-slate-800/30 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-indigo-400/30 hover:-translate-y-1.5 shadow-md relative overflow-hidden"
+              >
+                <div>
+                  {/* Project Image Panel */}
+                  <div className="relative rounded-2xl overflow-hidden mb-5 aspect-video border border-slate-100 dark:border-slate-800/40">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end p-4">
+                      <span className="text-xs font-bold text-white tracking-wide uppercase">View Project Details</span>
+                    </div>
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      loading="lazy"
+                      className={`w-full h-full object-cover transition-all duration-700 ${
+                        project.hoverImage ? "group-hover:opacity-0" : "group-hover:scale-105"
+                      }`}
+                    />
+                    {project.hoverImage && (
+                      <img
+                        src={project.hoverImage}
+                        alt={`${project.name} Preview`}
+                        loading="lazy"
+                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100"
+                      />
+                    )}
+                  </div>
+
+                  {/* Project Title */}
+                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300">
+                    {project.name}
+                  </h3>
+
+                  {/* Tech Stack Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.stack.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-indigo-50/50 dark:bg-indigo-900/10 text-indigo-600 dark:text-indigo-400 text-[11px] font-bold px-2.5 py-1 rounded-xl flex items-center gap-1 border border-indigo-100/30 dark:border-indigo-950/20"
+                      >
+                        <span className="text-xs">{tech.icon}</span>
+                        {tech.name}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-slate-600 dark:text-slate-450 text-sm leading-relaxed mb-6">
+                    {project.descriptions}
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-between gap-3 pt-4 border-t border-slate-100 dark:border-slate-900/50">
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center py-2.5 bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white text-sm font-semibold rounded-xl shadow-md transition-all duration-300 hover:scale-103 flex items-center justify-center gap-1.5"
+                    >
+                      <FaExternalLinkAlt className="text-xs" /> Live Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center py-2.5 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold rounded-xl border border-slate-200 dark:border-slate-800 transition-all duration-300 hover:scale-103 flex items-center justify-center gap-1.5"
+                    >
+                      <FaGithub className="text-sm" /> GitHub
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );

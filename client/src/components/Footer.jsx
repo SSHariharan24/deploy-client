@@ -1,97 +1,101 @@
 import React from "react";
-import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import 'remixicon/fonts/remixicon.css';
+import { FaLinkedinIn, FaGithub, FaArrowUp } from "react-icons/fa";
 import { motion } from "framer-motion";
-import {fadeIn} from './variants.js'
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { TypeAnimation } from 'react-type-animation';
-import { useEffect } from "react";
+
 const Footer = () => {
-  useEffect(() => {
-      AOS.init({
-          duration: 1000, // Animation duration in milliseconds
-          offset: 100, // Offset in px before animation triggers
-          easing: "ease-in-out", // Type of animation easing
-          once: true, // Animation triggers only once per scroll
-      });
-  }, []);
+  const scrollToTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="dark:bg-black  dark:text-white  py-8">
-      <motion.div
-      // variants={fadeIn("right",0.2)}
-      // initial={{opacity:0}}
-      // whileInView={"show"}
-      // viewport={{once:false,amount:0.7}}
-      className="container mx-auto px-8 md:px-16 lg:px-24">
-        <div className="flex flex-col md:flex-row md:space-x-12 items-center mb-4" data-aos="fade-left">
-          <div className="flex-1 mb-4 md:mb-0">
-            <h3 className="text-2xl font-bold mb-2">Hariharan s s</h3>
-            <p className="text-black dark:text-white">
-              Full-Stack Developer based in the INDIA, specializing in web and
-              software development.
+    <footer className="relative py-12 bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20">
+        
+        {/* Top Panel: Brand & Newsletter */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 mb-8 border-b border-slate-200 dark:border-slate-800">
+          
+          {/* Brand Info */}
+          <div className="md:col-span-6 space-y-3">
+            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-pink-500 dark:from-indigo-400 dark:to-pink-400">
+              Hariharan s s
+            </h3>
+            <p className="text-slate-550 dark:text-slate-400 text-sm max-w-sm leading-relaxed">
+              Full-Stack Developer specializing in crafting high-performance, responsive web applications using the MERN stack.
             </p>
           </div>
-          <div className="flex-1 w-full">
-            <form className="flex items-center justify-center">
+
+          {/* Newsletter Form */}
+          <div className="md:col-span-6 flex flex-col justify-center">
+            <form className="flex w-full max-w-md bg-white dark:bg-slate-950 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800/80 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500 transition-all">
               <input
                 type="email"
-                placeholder="Your email"
-                className="w-full p-2 rounded-l-lg bg-gray-800 border border-gray-600 
-                focus:outline-none focus:border-green-400"
+                required
+                placeholder="Subscribe to my newsletter"
+                className="w-full bg-transparent px-4 py-2 text-sm focus:outline-none text-slate-800 dark:text-slate-200"
               />
               <button
                 type="submit"
-                className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 
-                py-2 rounded-r-lg"
+                className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs rounded-xl shadow-md transition-all duration-300 shrink-0"
               >
                 Subscribe
               </button>
             </form>
           </div>
+
         </div>
 
-        <div
-          className="border-t border-gray-600 pt-4 flex flex-col md:flex-row 
-          justify-between items-center"
-        >
-          <p className="text-black dark:text-white">
+        {/* Bottom Panel: Copyright, Links & Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Copyright */}
+          <p className="text-slate-500 dark:text-slate-400 text-sm order-3 md:order-1">
             &copy; {new Date().getFullYear()} Hariharan SS. All rights reserved.
           </p>
-          <div className="flex space-x-4 my-4 md:my-0">
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              <FaFacebook />
+
+          {/* Social Icons */}
+          <div className="flex items-center space-x-3 order-1 md:order-2">
+            <a
+              href="https://www.linkedin.com/in/hariharan-ss-525aa7329/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-300 hover:scale-105"
+              aria-label="LinkedIn Profile"
+            >
+              <FaLinkedinIn className="text-sm" />
             </a>
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              <FaLinkedin />
-            </a>
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              <FaGithub />
+            <a
+              href="https://github.com/SSHariharan24"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-400 dark:hover:border-indigo-500 transition-all duration-300 hover:scale-105"
+              aria-label="GitHub Profile"
+            >
+              <FaGithub className="text-sm" />
             </a>
           </div>
-          <div className="flex space-x-4">
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              Privacy
-            </a>
-            <a href="#" className="text-black dark:text-gray-400 dark:hover:text-white">
-              Terms of Service
-            </a>
-  <motion.a
-  href="#"
-  initial={{ y: 0 }}
-  whileHover={{ y: -10, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)" }}
-  transition={{ type: "spring", stiffness: 300 }}
-  className="fixed right-4 bottom-4 bg-gradient-to-r from-green-400 to-blue-500 shadow-sm px-3 py-2 md:px-4 md:py-3 rounded-full text-lg z-50"
-  aria-label="Scroll to top"
->
-  <i className="ri-arrow-up-line text-white"></i>
-</motion.a>
+
+          {/* ScrollToTop Button Alignment */}
+          <div className="flex items-center order-2 md:order-3">
+            {/* Floating/fixed Scroll to Top Button */}
+            <motion.a
+              href="#"
+              onClick={scrollToTop}
+              initial={{ y: 0 }}
+              whileHover={{ y: -4, scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="fixed right-6 bottom-6 w-11 h-11 bg-indigo-600 hover:bg-indigo-550 text-white rounded-full shadow-lg hover:shadow-indigo-600/30 flex items-center justify-center text-base z-40 cursor-pointer"
+              aria-label="Scroll to top"
+            >
+              <FaArrowUp />
+            </motion.a>
           </div>
+
         </div>
-      </motion.div>
+
+      </div>
     </footer>
   );
 };
