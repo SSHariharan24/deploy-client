@@ -7,7 +7,7 @@ import weather from "../assets/weather-finder.png";
 import qrcode from "../assets/qr-code.png";
 import currency from "../assets/currency-convetor.png";
 import pics from "../assets/img.jpg";
-import imgs1 from "../assets/imgs1.png";
+import imgs1 from "../assets/livisync-dashboard.png";
 import imgs2 from "../assets/imgs2.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeIn } from "./variants.js";
@@ -24,11 +24,36 @@ import {
   SiBootstrap,
   SiCss3,
   SiTailwindcss,
+  SiGraphql,
+  SiTypescript,
 } from "react-icons/si";
+import { getIcon } from "./iconMap.jsx";
+import axios from "axios";
 
-const projects = [
+// ─── API Base URL ───────────────────────────────────────────────────────────
+const API_BASE = import.meta.env.VITE_API_URL || "https://portfolio-mern-5dev.onrender.com/api";
+
+// ─── Fallback: Hardcoded projects (used if API is down) ─────────────────────
+const fallbackProjects = [
   {
     id: 1,
+    name: "Livisync - Co-Living Management SaaS",
+    category: "Full-Stack",
+    stack: [
+      { name: "React.js", icon: <SiReact /> },
+      { name: "Node.js", icon: <SiNodedotjs /> },
+      { name: "GraphQL", icon: <SiGraphql /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Tailwindcss", icon: <SiTailwindcss /> },
+    ],
+    descriptions: "Architected a full-stack multi-tenant SaaS platform for PG/Co-living operators featuring interactive floor plan builders, Gemini AI assistant, and real-time revenue analytics.",
+    image: imgs1,
+    hoverImage: imgs1,
+    link: "https://livisync-two.vercel.app",
+  },
+  {
+    id: 2,
     name: "Billing Invoice System",
     category: "Full-Stack",
     stack: [
@@ -37,14 +62,14 @@ const projects = [
       { name: "MongoDB", icon: <SiMongodb /> },
       { name: "Tailwindcss", icon: <SiTailwindcss /> },
     ],
-    descriptions: "Developed an enterprise billing application featuring dynamic invoicing calculations, secure client billing data persistence, and interactive report aggregates.",
-    image: imgs1,
+    descriptions: "Developed an enterprise billing application featuring dynamic invoicing calculations, automated GST tax reports, Puppeteer PDF exports, and secure client billing data persistence.",
+    image: imgs2,
     hoverImage: imgs2,
-    link: "",
+    link: "https://billing-system-using-mern.vercel.app",
     github: ""
   },
   {
-    id: 2,
+    id: 3,
     name: "Real Time Chat-App",
     category: "Full-Stack",
     stack: [
@@ -61,7 +86,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/RealTime-Chat-App.git",
   },
   {
-    id: 3,
+    id: 4,
     name: "Secure CRUD with JWT",
     category: "Full-Stack",
     stack: [
@@ -76,7 +101,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/Jwt-auth-and-validation-using-Mern.git",
   },
   {
-    id: 4,
+    id: 5,
     name: "Recipe Search Food-Cart",
     category: "Frontend",
     stack: [
@@ -91,7 +116,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/Food-Cart.git",
   },
   {
-    id: 5,
+    id: 6,
     name: "Movie Finder Dashboard",
     category: "Frontend",
     stack: [
@@ -105,7 +130,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/Movie-App-New.git",
   },
   {
-    id: 6,
+    id: 7,
     name: "Live Weather Tracker",
     category: "Frontend",
     stack: [
@@ -119,7 +144,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/weather-finder.git",
   },
   {
-    id: 7,
+    id: 8,
     name: "QR-Code Generator & Scanner",
     category: "Utility",
     stack: [
@@ -133,7 +158,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/QR-Code.git",
   },
   {
-    id: 8,
+    id: 9,
     name: "Currency Converter Tool",
     category: "Utility",
     stack: [
@@ -147,7 +172,7 @@ const projects = [
     github: "https://github.com/SSHariharan24/currency-convertor.git",
   },
   {
-    id: 9,
+    id: 10,
     name: "Nuxt.js Local Blog Engine",
     category: "Full-Stack",
     stack: [
@@ -162,8 +187,51 @@ const projects = [
   },
 ];
 
+/**
+ * Transforms API project data into the format the UI expects.
+ * Maps iconKey strings to actual React icon components via iconMap.
+ */
+const transformApiProject = (apiProject) => ({
+  id: apiProject._id,
+  name: apiProject.name,
+  category: apiProject.category,
+  stack: apiProject.stack.map((tech) => ({
+    name: tech.name,
+    icon: getIcon(tech.iconKey),
+  })),
+  descriptions: apiProject.description,
+  image: apiProject.image,
+  hoverImage: apiProject.hoverImage || "",
+  link: apiProject.link || "",
+  github: apiProject.github || "",
+});
+
+// ─── Loading Skeleton Component ─────────────────────────────────────────────
+const ProjectSkeleton = () => (
+  <div className="glass-panel rounded-3xl p-5 border border-slate-200/40 dark:border-slate-800/30 animate-pulse">
+    <div className="rounded-2xl bg-slate-200 dark:bg-slate-800 aspect-video mb-5" />
+    <div className="h-6 bg-slate-200 dark:bg-slate-800 rounded-lg w-3/4 mb-3" />
+    <div className="flex gap-1.5 mb-4">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="h-6 w-16 bg-slate-200 dark:bg-slate-800 rounded-xl" />
+      ))}
+    </div>
+    <div className="space-y-2 mb-6">
+      <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-full" />
+      <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded w-5/6" />
+    </div>
+    <div className="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-900/50">
+      <div className="flex-1 h-10 bg-slate-200 dark:bg-slate-800 rounded-xl" />
+      <div className="flex-1 h-10 bg-slate-200 dark:bg-slate-800 rounded-xl" />
+    </div>
+  </div>
+);
+
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [usingFallback, setUsingFallback] = useState(false);
 
   const categories = ["All", "Full-Stack", "Frontend", "Utility"];
 
@@ -174,6 +242,30 @@ export const Projects = () => {
       easing: "ease-in-out",
       once: true,
     });
+  }, []);
+
+  // Fetch projects from API, fallback to hardcoded data if API is unavailable
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/projects`, { timeout: 8000 });
+        if (res.data && res.data.length > 0) {
+          setProjects(res.data.map(transformApiProject));
+          setUsingFallback(false);
+        } else {
+          // API returned empty — use fallback
+          setProjects(fallbackProjects);
+          setUsingFallback(true);
+        }
+      } catch (err) {
+        console.warn("Portfolio API unavailable, using fallback data:", err.message);
+        setProjects(fallbackProjects);
+        setUsingFallback(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
   }, []);
 
   const filteredProjects = activeCategory === "All"
@@ -223,6 +315,14 @@ export const Projects = () => {
           layout 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
+          {loading ? (
+            // Loading Skeletons
+            <>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <ProjectSkeleton key={i} />
+              ))}
+            </>
+          ) : (
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
@@ -236,7 +336,7 @@ export const Projects = () => {
               >
                 <div>
                   {/* Project Image Panel */}
-                  <div className="relative rounded-2xl overflow-hidden mb-5 aspect-video border border-slate-100 dark:border-slate-800/40">
+                  <div className="relative rounded-2xl overflow-hidden mb-5 aspect-video border border-slate-100 dark:border-slate-800/40 bg-slate-950/90 flex items-center justify-center">
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end p-4">
                       <span className="text-xs font-bold text-white tracking-wide uppercase">View Project Details</span>
                     </div>
@@ -244,16 +344,16 @@ export const Projects = () => {
                       src={project.image}
                       alt={project.name}
                       loading="lazy"
-                      className={`w-full h-full object-cover transition-all duration-700 ${
-                        project.hoverImage ? "group-hover:opacity-0" : "group-hover:scale-105"
+                      className={`w-full h-full object-contain p-1 transition-all duration-700 ${
+                        project.hoverImage && project.hoverImage !== project.image ? "group-hover:opacity-0" : "group-hover:scale-105"
                       }`}
                     />
-                    {project.hoverImage && (
+                    {project.hoverImage && project.hoverImage !== project.image && (
                       <img
                         src={project.hoverImage}
                         alt={`${project.name} Preview`}
                         loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100"
+                        className="absolute inset-0 w-full h-full object-contain p-1 opacity-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100"
                       />
                     )}
                   </div>
@@ -308,6 +408,7 @@ export const Projects = () => {
               </motion.div>
             ))}
           </AnimatePresence>
+          )}
         </motion.div>
       </div>
     </div>
